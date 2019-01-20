@@ -1,0 +1,20 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование</title>
+</head>
+<body>
+    <h1>Редактирование</h1>
+
+    {{#detail}}
+    <form method="post" name="edit">
+
+            <input type="text" name="text_name" value={{name}} placeholder="Название">
+            <input type="text" name="necessity" value={{#necessity}}+{{/necessity}}{{^necessity}}-{{/necessity}} placeholder="Необходимость(+/-)">
+            <input type="number" name="count" value={{count}} placeholder="Количество">
+            <button type="submit">Изменить</button>
+
+    </form>
+    {{/detail}}
+</body>
+</html>

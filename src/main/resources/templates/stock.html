@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<h1>Добавление</h1>
+<form method="post" action="add">
+    <input type="text" name="text_name" placeholder="Название" />
+    <select name="necessity" required>
+        <option>Необходим(+)</option>
+        <option>Не необходим(-)</option>
+    </select>
+    <input type="number" name="count" placeholder="Количество" />
+
+    <button type="submit">Добавить</button>
+</form>
+<h1>Поиск</h1>
+<form method="post" action="search">
+    <input type="text" name="substring" placeholder="Введите часть названия">
+    <button type="submit">Поиск</button>
+</form>
+<h1>Сортировка</h1>
+<form method="post" action="sorting">
+    <select name="option" required>
+        <option>Все детали</option>
+        <option>Необходимые для собрки детали</option>
+        <option>Опциональные детали</option>
+    </select>
+    <button type="submit">Отсортировать</button>
+</form>
+<h1>Детали</h1>
+<table border="1">
+    <tr>
+        <td width="300px">Название</td>
+        <td>Необходимость</td>
+        <td>Количество</td>
+        <td colspan="2">Действия</td>
+    </tr>
+    {{#details}}
+    <tr >
+        <td>{{name}}</td>
+        <td>{{#necessity}}+{{/necessity}}{{^necessity}}-{{/necessity}}</td>
+        <td>{{count}}</td>
+        <td><a href=edit?getId={{id}} >изменить</a></td>
+        <td><a href=delete?getId={{id}}>удалить</a></td>
+    </tr>
+    {{/details}}
+</table>
+<form method="post" action="paging">
+    <input type="number" name="page" value={{curpage}} placeholder="Страница">/{{pagecount}}
+    <button type="submit">Перейти</button>
+</form>
+Можно собрать {{cancreate}} компьютеров
+</body>
+</html>
